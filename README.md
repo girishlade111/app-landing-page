@@ -1,30 +1,77 @@
 # App Landing Page
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A modern **marketing landing page for a notes/productivity app**, generated with [v0](https://v0.app) and built on Next.js. It covers the classic SaaS landing structure — header nav, hero with CTA, feature highlights, pricing/testimonial sections — and is fully static, so it can be dropped onto any static host as-is.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/gileb64375-5584s-projects/v0-app-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/NEmjq959jdS)
+## Sections
 
-## Overview
+- Header with nav links ("Start Here", "Products", "Solutions", "Compare", "Pricing", "FAQs") + "View Plans" CTA
+- Hero: "New — Make your notes great again" badge, headline "A notes app that works like an Organizer", dual CTA buttons
+- Feature/testimonial and pricing sections (extendable — see `app/page.tsx`)
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Tech stack
+
+- **Next.js 15.2.4** (App Router)
+- **React 19**
+- **Tailwind CSS 3.4** + tailwindcss-animate
+- **shadcn/ui** (Radix primitives, cva, clsx, tailwind-merge)
+- **Lucide icons**
+- TypeScript
+
+## Quick start
+
+Requires Node.js 18+.
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Build & static export
+
+Fully client-side (no API routes, no server actions) → static export:
+
+```bash
+npm run build          # writes static files to ./out
+```
+
+Serve `./out` with any static host (Cloudflare Pages, Netlify, GitHub Pages, `npx serve out`).
+
+## Project structure
+
+```
+app-landing-page/
+├── app/
+│   ├── layout.tsx        # Root layout (fonts, metadata)
+│   ├── page.tsx          # Entire landing page (sections)
+│   └── globals.css
+├── components/
+│   ├── theme-provider.tsx
+│   └── ui/button.tsx     # shadcn button
+├── components.json
+├── lib/utils.ts          # cn() helper
+├── public/               # Images (incl. professional-headshot.png)
+├── styles/globals.css    # Legacy duplicate of app/globals.css
+├── next.config.mjs       # images.unoptimized, output: 'export'
+├── tailwind.config.ts
+└── postcss.config.mjs
+```
+
+## Customizing
+
+- Replace `LOGO`, the headline, and nav labels in `app/page.tsx`.
+- Swap `public/professional-headshot.png` with real imagery.
+- Update `app/layout.tsx` metadata (title, description) for SEO.
+
+## Environment variables
+
+None. No backend.
 
 ## Deployment
 
-Your project is live at:
+Static — works on any static host. Repo ships with `output: 'export'` so `npm run build` writes to `./out` directly.
 
-**[https://vercel.com/gileb64375-5584s-projects/v0-app-landing-page](https://vercel.com/gileb64375-5584s-projects/v0-app-landing-page)**
+---
 
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/projects/NEmjq959jdS](https://v0.app/chat/projects/NEmjq959jdS)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Built by Girish Lade — [ladestack.in](https://ladestack.in)
